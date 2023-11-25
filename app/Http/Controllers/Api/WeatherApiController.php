@@ -13,7 +13,7 @@ class WeatherApiController extends Controller
     public function getApiWeather(string $location)
     {
 
-        $client = new Client(); 
+        $client = new Client();
 
         // access key in .env
         $this->apiKey = env('OPEN_WEATHER_API');
