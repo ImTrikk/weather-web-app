@@ -11,8 +11,7 @@ export default {
         },
         extend: {
             colors: {
-                primaryColor: "#5A5DFA",
-                secondaryColor: "#DDE4FE",
+                lightGray: "##fafafa",
             },
             fontFamily: {
                 Poppins: ["Poppins", "sans-serif"],
