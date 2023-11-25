@@ -10,10 +10,15 @@ export const Weather = ({ weatherData }) => {
 
   return (
     <>
-      <div className="bg-white p-5 rounded">
-        <h1 className="text-gray-500">
-          Feels like: {weather?.weatherResponse?.main?.feels_like}
-        </h1>
+      <div className="lg:max-mx-4xl">
+        <div className="bg-white p-5 rounded text-gray-400">
+          <div>
+          </div>
+          <div className="flex flex-col">
+            <h1 className='font-bold text-2xl'>{weather?.weatherResponse?.main?.feels_like}°</h1>
+            <h1>{weather?.location}</h1>
+          </div>
+        </div>
       </div>
     </>
   );

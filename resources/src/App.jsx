@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './App.css';
 import { Weather } from './components/Weather';
+import { BsSearch } from 'react-icons/bs';
+
 function App() {
   const [newLocation, setLocation] = useState('');
   const [weatherData, setWeatherData] = useState([]);
@@ -33,23 +35,28 @@ function App() {
   return (
     <>
       <div className="bg-gradient-to-r from-indigo-500 from-10% via-[rgb(111,93,192)] via-30% to-[rgb(173,125,193)] to-90% text-white h-screen">
-        <div>
-            
+        <div className="mx-5 lg:mx-32 lg:max-mx-4xl">
+          <div className="flex items-center justify-center">
+            <form action="">
+              <div className="flex items-center gap-2">
+                <input
+                  type="text"
+                  value={newLocation}
+                  placeholder="Enter city"
+                  onChange={(e) => setLocation(e.target.value)}
+                  className="text-gray-500 h-10 rounded outline-none text-xs px-4"
+                />
+                <div
+                  onClick={handelGetWeatherData}
+                  className="text-xs h-10 w-10 flex items-center justify-center bg-white text-gray-500  rounded px-2"
+                >
+                  <BsSearch size={16}/>
+                </div>
+              </div>
+            </form>
+          </div>
+          {responseGood ? <Weather weatherData={weatherData} /> : ''}
         </div>
-        <div className='flex items-center justify-center'>
-          <form action="">
-            <input
-              type="text"
-              value={newLocation}
-              placeholder="Enter city"
-              onChange={(e) => setLocation(e.target.value)}
-              className="text-gray-500"
-            />
-            <button onClick={handelGetWeatherData}>search</button>
-          </form>
-        </div>
-        {responseGood ? <Weather weatherData={weatherData} /> : ""  }
-        {responseGood ? <Weather weatherData={weatherData} /> : ""  }
       </div>
     </>
   );
