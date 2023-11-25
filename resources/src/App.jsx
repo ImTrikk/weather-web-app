@@ -35,7 +35,7 @@ function App() {
   });
  };
 
- const handleGetForecast = async (e) => {
+ const handleGetForecast = async () => {
   const location = newLocation.toLowerCase().replace(' city', '');
   console.log(location);
 
@@ -46,6 +46,7 @@ function App() {
     Accept: 'application/json'
    }
   }).then(async (res) => {
+    console.log(res)
    if (res.ok) {
     return res.json().then((data) => {
      console.log(data);
@@ -90,7 +91,7 @@ function App() {
          <Weather weatherData={weatherData} />
         </div>
         <div className="pt-5">
-         <Forecast weatherData={weatherData} />
+         <Forecast forecastData={forecastData} />
         </div>
        </div>
       ) : (

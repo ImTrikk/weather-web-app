@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
-use Illuminate\Http\Request;
 use Exception;
 
 class ForecastController extends Controller
@@ -19,14 +18,24 @@ class ForecastController extends Controller
         $this->apiKey = env('OPEN_WEATHER_API');
 
         // api from openWeather
-        $url = "https://pro.openweathermap.org/data/2.5/forecast/hourly?q={$location},us&mode=xml&appid={$this->apiKey}";
+        $url = "https://api.openweathermap.org/data/2.5/forecast?q={$location}&appid={$this->apiKey}";
 
         try {
 
-            $weather = $client->request('GET', $url);
+            $forecast = $client->request('GET', $url);
+
+            $forecastResponse = json_decode(
+                $forecast->getBody()->getContents(),
+                true
+            );
+
+            return response()->json([
+                'location' => $location,
+                'forecastResponse' => $forecastResponse,
+            ]);
 
         } catch (Exception $e) {
-            throw new Exception("Cannot connnect with openWeather API");
+            throw new Exception("Cannot connnect with openWeather API in forecast");
         }
     }
 }

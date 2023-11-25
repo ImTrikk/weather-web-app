@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\WeatherApiController;
+use App\Http\Controllers\Api\ForecastController;
+use App\Http\Controllers\Api\WeatherApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/get-weather/{location}', [WeatherApiController::class, 'getApiWeather']);
+
+Route::get('/get-forecast/{location}', [ForecastController::class, 'getForecast']);
