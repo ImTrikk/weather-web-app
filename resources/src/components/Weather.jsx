@@ -28,7 +28,6 @@ export const Weather = ({ weatherData, onChangeCondition }) => {
 
  const getWeatherCondition = () => {
   const condition = weatherCondition;
-  console.log('Component: ', condition);
   switch (condition) {
    case 'Sunny':
     return weatherIcon.sunny;

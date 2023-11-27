@@ -24,7 +24,6 @@ function App() {
 
  const handelGetWeatherData = async (e) => {
   const location = newLocation.toLowerCase().replace(' city', '');
-  console.log(location);
 
   e.preventDefault();
   fetch(`http://127.0.0.1:8000/api/get-weather/${location}`, {
@@ -35,7 +34,6 @@ function App() {
    }
   }).then(async (res) => {
    return res.json().then((data) => {
-    console.log(data);
     if (res.ok) {
      handleGetForecast();
      setWeatherData(data);
@@ -49,7 +47,6 @@ function App() {
 
  const handleGetForecast = async () => {
   const location = newLocation.toLowerCase().replace(' city', '');
-  console.log(location);
 
   fetch(`http://127.0.0.1:8000/api/get-forecast/${location}`, {
    method: 'GET',
@@ -58,10 +55,8 @@ function App() {
     Accept: 'application/json'
    }
   }).then(async (res) => {
-   console.log(res);
    if (res.ok) {
     return res.json().then((data) => {
-     console.log(data);
      setForecastData(data);
     });
    } else {
@@ -71,7 +66,6 @@ function App() {
  };
 
  const onChangeCondition = (value) => {
-  console.log(value);
   setBackground(value);
  };
 
@@ -108,7 +102,7 @@ function App() {
     <div className="mx-5 lg:mx-32 lg:max-mx-4xl rounded p-10">
      <div className="text-center w-[600px]">
       <h1 className="text-3xl font-bold">Weather Now</h1>
-      <p className='text-xs pt-2'>
+      <p className="text-xs pt-2">
        A straightforward weather app designed to provide you with real-time
        weather updates at your fingertips. Stay informed about current weather
        conditions, temperature, and forecasts for any city. Enjoy a clean and
