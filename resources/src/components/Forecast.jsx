@@ -5,7 +5,7 @@ export const Forecast = ({ weatherData }) => {
 
  useEffect(() => {
   if (weatherData?.list) {
-   setForecast(weatherData.list);
+   setForecast(weatherData.forecastResponse.list);
   }
  }, [weatherData]);
 
@@ -18,7 +18,9 @@ export const Forecast = ({ weatherData }) => {
       <div>
        <p className="text-white">
         Date:{' '}
-        {new Date(dailyForecast.forecastResponse?.list.dt * 1000).toLocaleDateString()}
+        {new Date(
+         dailyForecast.forecastResponse?.list.dt * 1000
+        ).toLocaleDateString()}
        </p>
        <p className="text-white">
         Temperature: {dailyForecast.forecastResponse?.list.main.temp}°C
@@ -27,12 +29,13 @@ export const Forecast = ({ weatherData }) => {
         Weather: {dailyForecast.forecastResponse?.list.weather[0].main}
        </p>
        <p className="text-white">
-        Description: {dailyForecast.forecastResponse?.list.weather[0].description}
+        Description:{' '}
+        {dailyForecast.forecastResponse?.list.weather[0].description}
        </p>
       </div>
      </div>
     ))}
-   </div>	
+   </div>
   </div>
  );
 };

@@ -17,7 +17,9 @@ function App() {
   sunny: '/static/sunny.gif',
   rainy: '/static/rainy.gif',
   thunder: '/static/thunder.gif',
-  cloudy: '/static/cloudy.gif'
+  cloudy: '/static/cloudy.gif',
+  snow: '/static/snow.gif',
+  clear: '/static/clear.gif'
  };
 
  const handelGetWeatherData = async (e) => {
@@ -75,18 +77,21 @@ function App() {
 
  const getBackgroundImage = () => {
   const condition = background;
-  console.log('Condition in get background: ', condition);
   switch (condition) {
-   case 'sunny':
+   case 'Sunny':
     return bg.sunny;
-   case 'rainy':
+   case 'Rain':
     return bg.rainy;
-   case 'thunder':
+   case 'Thunder':
     return bg.thunder;
    case 'Clouds':
     return bg.cloudy;
+   case 'Snow':
+    return bg.snow;
+   case 'Clear':
+    return bg.clear;
    default:
-    return bg.sunny; // Default to sunny if condition is not recognized
+    return bg.default;
   }
  };
 
@@ -101,11 +106,18 @@ function App() {
     }}
    >
     <div className="mx-5 lg:mx-32 lg:max-mx-4xl rounded p-10">
-     <div className="text-center">
-      <h1 className="text-2xl font-bold">Weather Now</h1>
+     <div className="text-center w-[600px]">
+      <h1 className="text-3xl font-bold">Weather Now</h1>
+      <p className='text-xs pt-2'>
+       A straightforward weather app designed to provide you with real-time
+       weather updates at your fingertips. Stay informed about current weather
+       conditions, temperature, and forecasts for any city. Enjoy a clean and
+       intuitive interface, making it easy to check the weather with just a
+       glance.
+      </p>
      </div>
-     <div className="flex items-center justify-center mt-10  backdrop-blur-lg p-10 rounded-xl">
-      <form action="" className="w-full md:w-[500px]">
+     <div className="flex items-center justify-center mt-10  backdrop-blur-lg p-5 rounded">
+      <form action="" className="w-full">
        <div className="flex items-center gap-2 w-full">
         <input
          type="text"
