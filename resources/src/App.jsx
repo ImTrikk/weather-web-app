@@ -10,6 +10,16 @@ function App() {
  const [forecastData, setForecastData] = useState([]);
  const [responseGood, setResponseGood] = useState(false);
 
+ const [background, setBackground] = useState('');
+
+ const bg = {
+  default: '/static/default.jpg',
+  sunny: '/static/sunny.gif',
+  rainy: '/static/rainy.gif',
+  thunder: '/static/thunder.gif',
+  cloudy: '/static/cloudy.gif'
+ };
+
  const handelGetWeatherData = async (e) => {
   const location = newLocation.toLowerCase().replace(' city', '');
   console.log(location);
@@ -46,7 +56,7 @@ function App() {
     Accept: 'application/json'
    }
   }).then(async (res) => {
-    console.log(res)
+   console.log(res);
    if (res.ok) {
     return res.json().then((data) => {
      console.log(data);
@@ -58,14 +68,43 @@ function App() {
   });
  };
 
+ const onChangeCondition = (value) => {
+  console.log(value);
+  setBackground(value);
+ };
+
+ const getBackgroundImage = () => {
+  const condition = background;
+  console.log('Condition in get background: ', condition);
+  switch (condition) {
+   case 'sunny':
+    return bg.sunny;
+   case 'rainy':
+    return bg.rainy;
+   case 'thunder':
+    return bg.thunder;
+   case 'Clouds':
+    return bg.cloudy;
+   default:
+    return bg.sunny; // Default to sunny if condition is not recognized
+  }
+ };
+
  return (
   <>
-   <div className="bg-[#1f4a51] text-white h-screen">
-    <div className="mx-5 lg:mx-32 lg:max-mx-4xl">
+   <div
+    className=" text-white h-screen flex items-center justify-center "
+    style={{
+     backgroundImage: `url(${getBackgroundImage()})`,
+     backgroundSize: 'cover',
+     backgroundPosition: 'top-right'
+    }}
+   >
+    <div className="mx-5 lg:mx-32 lg:max-mx-4xl rounded p-10">
      <div className="text-center">
-      <h1>Weather web app</h1>
+      <h1 className="text-2xl font-bold">Weather Now</h1>
      </div>
-     <div className="flex items-center justify-center ">
+     <div className="flex items-center justify-center mt-10  backdrop-blur-lg p-10 rounded-xl">
       <form action="" className="w-full md:w-[500px]">
        <div className="flex items-center gap-2 w-full">
         <input
@@ -88,7 +127,10 @@ function App() {
       {responseGood ? (
        <div>
         <div>
-         <Weather weatherData={weatherData} />
+         <Weather
+          weatherData={weatherData}
+          onChangeCondition={(value) => onChangeCondition(value)}
+         />
         </div>
         <div className="pt-5">
          <Forecast forecastData={forecastData} />

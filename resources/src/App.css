@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-main{
+	background-image: url();
+}
+
 *{
  font-family: 'Poppins';
 	scroll-behavior: smooth;

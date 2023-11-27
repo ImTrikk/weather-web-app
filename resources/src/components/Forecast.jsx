@@ -13,7 +13,7 @@ export const Forecast = ({ weatherData }) => {
   <div>
    <h2>5-Day Forecast</h2>
    <div className="flex flex-wrap">
-    {forecast.map((dailyForecast, index) => (
+    {forecast?.forecastResponse?.list.map((dailyForecast, index) => (
      <div key={index} className="bg-white w-[100px] h-auto">
       <div>
        <p className="text-white">
