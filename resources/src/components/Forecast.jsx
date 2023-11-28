@@ -41,7 +41,7 @@ export const Forecast = ({ forecastData }) => {
          className="w-[60px]"
         />
         <p className="text-white text-lg">
-         {(((dailyForecast.main.temp - 32) * 5) / 9).toFixed(2)}°
+         {(dailyForecast.main.temp - 273.15).toFixed(2)}°
         </p>
        </div>
        <div className="pt-2">

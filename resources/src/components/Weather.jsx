@@ -77,27 +77,27 @@ export const Weather = ({ weatherData, onChangeCondition }) => {
         <h1 className="text-lg font-semibold">Weather Conditions</h1>
         <div className="pt-2 space-y-1">
          <p className="text-xs">
-          Wind speed: {weather?.weatherResponse?.wind.speed}
+          Wind speed: &nbsp; {weather?.weatherResponse?.wind.speed}
          </p>
          <p className="text-xs">
-          Wind gust: {weather?.weatherResponse?.wind.gust}
+          Wind gust: &nbsp; {weather?.weatherResponse?.wind.gust}
          </p>
          <p className="text-xs">
-          Humidity: {weather?.weatherResponse.main.humidity}%
+          Humidity: &nbsp; {weather?.weatherResponse.main.humidity}%
          </p>
         </div>
        </div>
-       <div className="pt-2 space-y-1">
+       <div className="pt-2 ">
         <h1 className="text-lg font-semibold">Other Information</h1>
-        <div className="pt-2">
+        <div className="pt-2 space-y-1">
          <p className="text-xs">
-          Longitude: {weather?.weatherResponse?.coord.lon}
+          Longitude: &nbsp; {weather?.weatherResponse?.coord.lon}
          </p>
          <p className="text-xs">
-          Latitude: {weather?.weatherResponse?.coord.lat}
+          Latitude: &nbsp; {weather?.weatherResponse?.coord.lat}
          </p>
          <p className="text-xs">
-          Visibility: {weather?.weatherResponse.visibility} km
+          Visibility: &nbsp; {weather?.weatherResponse.visibility} km
          </p>
         </div>
        </div>
@@ -112,16 +112,16 @@ export const Weather = ({ weatherData, onChangeCondition }) => {
        </div>
        <div className="pt-2 space-y-1">
         <p className="text-xs">
-         Feels like: {weather?.weatherResponse?.main.feels_like}°
+         Feels like: &nbsp; {weather?.weatherResponse?.main.feels_like}°
         </p>
         <p className="text-xs">
-         Description: {weather?.weatherResponse?.weather[0]?.description}
+         Description: &nbsp; {weather?.weatherResponse?.weather[0]?.description}
         </p>
         <p className="text-xs">
-         Min Temp: {weather?.weatherResponse?.main.temp_min}°
+         Min Temp: &nbsp; {weather?.weatherResponse?.main.temp_min}°
         </p>
         <p className="text-xs">
-         Max Temp: {weather?.weatherResponse?.main.temp_max}°
+         Max Temp: &nbsp; {weather?.weatherResponse?.main.temp_max}°
         </p>
        </div>
       </div>
