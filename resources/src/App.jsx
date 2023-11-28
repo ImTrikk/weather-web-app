@@ -22,7 +22,8 @@ function App() {
   thunder: '/static/thunder.gif',
   cloudy: '/static/cloudy.gif',
   snow: '/static/snow.gif',
-  clear: '/static/clear.gif'
+  clear: '/static/clear.gif',
+  haze: '/static/haze.gif'
  };
 
  const handelGetWeatherData = async (e) => {
@@ -131,6 +132,8 @@ function App() {
     return bg.snow;
    case 'Clear':
     return bg.clear;
+   case 'Haze':
+    return bg.haze;
    default:
     return bg.default;
   }

@@ -19,7 +19,8 @@ export const Weather = ({ weatherData, onChangeCondition }) => {
   cloudy: '/static/icons/clouds.png',
   rain: '/static/icons/rain.png',
   snow: '/static/icons/snow.png',
-  storm: '/static/icons/storm.png'
+  storm: '/static/icons/storm.png',
+  haze: '/static/icons/haze.png'
  };
 
  const getWeatherCondition = () => {
@@ -37,6 +38,8 @@ export const Weather = ({ weatherData, onChangeCondition }) => {
     return weatherIcon.snow;
    case 'Clear':
     return weatherIcon.clear;
+   case 'Haze':
+    return weatherIcon.haze;
    case 'Clear Sky':
     return weatherIcon.clear;
    default:

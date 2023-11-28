@@ -19,7 +19,7 @@ export const Forecast = ({ forecastData }) => {
   Clouds: '/static/icons/clouds.png',
   Snow: '/static/icons/snow.png',
   Clear: '/static/icons/clear.png',
-  'Clear Sky': '/static/icons/clear.png',
+  Haze: '/static/icons/haze.png',
   default: '/static/icons/default.png'
  };
 
