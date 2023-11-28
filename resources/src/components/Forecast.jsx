@@ -44,9 +44,13 @@ export const Forecast = ({ forecastData }) => {
          {(((dailyForecast.main.temp - 32) * 5) / 9).toFixed(2)}°
         </p>
        </div>
-       <div className='pt-2'>
+       <div className="pt-2">
         <p className="text-white text-xs">
-         Date: {new Date(dailyForecast.dt * 1000).toLocaleDateString()}
+         {new Date(dailyForecast?.dt * 1000).toLocaleDateString('en-US', {
+          month: 'long',
+          day: 'numeric',
+          year: 'numeric'
+         })}
         </p>
         <p className="text-white text-xs">
          Time: {new Date(dailyForecast.dt * 1000).toLocaleTimeString()}
