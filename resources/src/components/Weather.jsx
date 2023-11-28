@@ -51,48 +51,79 @@ export const Weather = ({ weatherData, onChangeCondition }) => {
  return (
   <div className="lg:max-mx-4xl">
    <div className="backdrop-blur-lg p-5 rounded text-white">
-    <div className="flex items-center gap-10">
-     {/* <div>
-      <img src="/static/cloudy.png" alt="" className='w-[250px]'/>
-     </div> */}
-     <div>
-      <div className="flex flex-col">
-       <div className="flex items-start">
-        <h1 className="font-semibold text-5xl">
-         {weather?.weatherResponse?.main?.temp}
-        </h1>
-        <p className="font-semibold text-xl">°</p>
-       </div>
-       <h1 className="text-xs">
+    <div className="flex items-center">
+     <div className="flex items-start w-full justify-between">
+      <div className="flex flex-col justify-start">
+       <h1 className="text-2xl font-semibold">
         {weather?.weatherResponse?.name},{' '}
         {weather?.weatherResponse?.sys.country}
        </h1>
-       <div>
-        <img src={`${getWeatherCondition()}`} alt="" className="w-[100px]" />
+       <p className="text-xs">
+        {new Date(weather?.weatherResponse?.dt * 1000).toLocaleDateString(
+         'en-US',
+         { month: 'long', day: 'numeric', year: 'numeric' }
+        )}
+       </p>
+       <div className="pt-2">
+        <img src={`${getWeatherCondition()}`} alt="" className="w-[120px]" />
+        <p className="text-sm font-semibold">
+         {weather?.weatherResponse?.weather[0]?.main}
+        </p>
        </div>
       </div>
-      {/* <div>
-       <p className="text-xs">
-        Feels like: {weather?.weatherResponse?.main.feels_like}°
-       </p>
-       <p className="text-xs">
-        Condition: {weather?.weatherResponse?.weather[0]?.main}
-       </p>
-       <p className="text-xs">
-        Description: {weather?.weatherResponse?.weather[0]?.description}
-       </p>
-       {/* Render the weather icon using an <img> element */}
-      {/* {weather?.weatherResponse?.weather[0]?.icon && (
-        <img
-         src={getIconUrl(weather?.weatherResponse?.weather[0]?.icon)}
-         alt="Weather Icon"
-        />
-       )} */}
-      {/* </div> */}
-      <div>
-       <p className="text-xs">
-        Humidity: {weather?.weatherResponse.main.humidity}%
-       </p>
+      {/* middle */}
+      <div className="flex flex-col">
+       <div>
+        <h1 className="text-lg font-semibold">Weather Conditions</h1>
+        <div className="pt-2 space-y-1">
+         <p className="text-xs">
+          Wind speed: {weather?.weatherResponse?.wind.speed}
+         </p>
+         <p className="text-xs">
+          Wind gust: {weather?.weatherResponse?.wind.gust}
+         </p>
+         <p className="text-xs">
+          Humidity: {weather?.weatherResponse.main.humidity}%
+         </p>
+        </div>
+       </div>
+       <div className="pt-2 space-y-1">
+        <h1 className="text-lg font-semibold">Other Information</h1>
+        <div className="pt-2">
+         <p className="text-xs">
+          Longitude: {weather?.weatherResponse?.coord.lon}
+         </p>
+         <p className="text-xs">
+          Latitude: {weather?.weatherResponse?.coord.lat}
+         </p>
+         <p className="text-xs">
+          Visibility: {weather?.weatherResponse.visibility} km
+         </p>
+        </div>
+       </div>
+      </div>
+      {/* here */}
+      <div className="flex flex-col items-start justify-start  ">
+       <div className="flex items-start justify-start">
+        <h1 className="font-medium text-8xl">
+         {weather?.weatherResponse?.main?.temp}
+        </h1>
+        <p className="font-semibd text-5xl">°</p>
+       </div>
+       <div className="pt-2 space-y-1">
+        <p className="text-xs">
+         Feels like: {weather?.weatherResponse?.main.feels_like}°
+        </p>
+        <p className="text-xs">
+         Description: {weather?.weatherResponse?.weather[0]?.description}
+        </p>
+        <p className="text-xs">
+         Min Temp: {weather?.weatherResponse?.main.temp_min}°
+        </p>
+        <p className="text-xs">
+         Max Temp: {weather?.weatherResponse?.main.temp_max}°
+        </p>
+       </div>
       </div>
      </div>
     </div>

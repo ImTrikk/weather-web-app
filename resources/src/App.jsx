@@ -66,6 +66,7 @@ function App() {
  };
 
  const onChangeCondition = (value) => {
+  console.log(value);
   setBackground(value);
  };
 
@@ -92,23 +93,27 @@ function App() {
  return (
   <>
    <div
-    className=" text-white h-screen flex items-center justify-center "
+    className=" text-white h-screen overflow-hidden flex items-center justify-center"
     style={{
      backgroundImage: `url(${getBackgroundImage()})`,
-     backgroundSize: 'cover',
-     backgroundPosition: 'top-right'
+     //  backgroundSize: 'cover',
+     backgroundSize: '100% 100%',
+     backgroundPosition: 'top-right',
+     backgroundRepeat: 'no-repeat'
     }}
    >
-    <div className="mx-5 lg:mx-32 lg:max-mx-4xl rounded p-10">
-     <div className="text-center w-[600px]">
-      <h1 className="text-3xl font-bold">Weather Now</h1>
-      <p className="text-xs pt-2">
-       A straightforward weather app designed to provide you with real-time
-       weather updates at your fingertips. Stay informed about current weather
-       conditions, temperature, and forecasts for any city. Enjoy a clean and
-       intuitive interface, making it easy to check the weather with just a
-       glance.
-      </p>
+    <div className="mx-5 lg:mx-32 lg:max-mx-4xl rounded p-10 ">
+     <div className="flex items-center justify-center">
+      <div className="w-[600px] text-center">
+       <h1 className="text-3xl font-bold">Weather Now</h1>
+       <p className="text-xs pt-2">
+        A straightforward weather app designed to provide you with real-time
+        weather updates at your fingertips. Stay informed about current weather
+        conditions, temperature, and forecasts for any city. Enjoy a clean and
+        intuitive interface, making it easy to check the weather with just a
+        glance.
+       </p>
+      </div>
      </div>
      <div className="flex items-center justify-center mt-10  backdrop-blur-lg p-5 rounded">
       <form action="" className="w-full">
