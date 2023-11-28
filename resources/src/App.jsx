@@ -174,6 +174,11 @@ function App() {
          value={newLocation}
          placeholder="Enter city"
          onChange={(e) => setLocation(e.target.value)}
+         onKeyPress={(e) => {
+          if (e.key === 'Enter') {
+           handelGetWeatherData(e);
+          }
+         }}
          className="w-full text-gray-500 h-10 rounded outline-none text-xs px-4"
         />
         <div
