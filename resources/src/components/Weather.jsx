@@ -76,10 +76,10 @@ export const Weather = ({ weatherData, onChangeCondition }) => {
         <h1 className="text-lg font-semibold">Weather Conditions</h1>
         <div className="pt-2 space-y-1">
          <p className="text-xs">
-          Wind speed: &nbsp; {weather?.weatherResponse?.wind.speed}
+          Wind speed: &nbsp; {weather?.weatherResponse?.wind.speed} km/h
          </p>
          <p className="text-xs">
-          Wind gust: &nbsp; {weather?.weatherResponse?.wind.gust}
+          Wind gust: &nbsp; {weather?.weatherResponse?.wind.gust} km/h
          </p>
          <p className="text-xs">
           Humidity: &nbsp; {weather?.weatherResponse.main.humidity}%
