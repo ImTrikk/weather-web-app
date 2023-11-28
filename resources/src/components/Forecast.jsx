@@ -9,10 +9,6 @@ export const Forecast = ({ forecastData }) => {
   }
  }, [forecastData]);
 
- // if (!forecastData || !forecastData.forecastResponse) {
- //  return <p>Loading...</p>;
- // }
-
  // Use slice(0, 5) to get only the first 5 elements
  const firstFiveForecast = forecast.slice(0, 5);
 

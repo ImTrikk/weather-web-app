@@ -4,6 +4,9 @@ import { Weather } from './components/Weather';
 import { BsSearch } from 'react-icons/bs';
 import { Forecast } from './components/Forecast';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
  const [newLocation, setLocation] = useState('');
  const [weatherData, setWeatherData] = useState([]);
@@ -26,47 +29,90 @@ function App() {
   const location = newLocation.toLowerCase().replace(' city', '');
 
   e.preventDefault();
-  fetch(`http://127.0.0.1:8000/api/get-weather/${location}`, {
-   method: 'GET',
-   headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/json'
-   }
-  }).then(async (res) => {
-   return res.json().then((data) => {
-    if (res.ok) {
-     handleGetForecast();
-     setWeatherData(data);
-     setResponseGood(true);
-    } else {
-     console.log(data);
+  try {
+   fetch(`http://127.0.0.1:8000/api/get-weather/${location}`, {
+    method: 'GET',
+    headers: {
+     'Content-Type': 'application/json',
+     Accept: 'application/json'
     }
+   }).then(async (res) => {
+    return res.json().then((data) => {
+     if (res.ok) {
+      handleGetForecast();
+      setWeatherData(data);
+      setResponseGood(true);
+     } else {
+      toast.error(`Cannot search ${location}`, {
+       position: 'top-center',
+       autoClose: 2000,
+       hideProgressBar: false,
+       closeOnClick: true,
+       pauseOnHover: true,
+       draggable: true,
+       progress: undefined,
+       theme: 'light'
+      });
+     }
+    });
    });
-  });
+  } catch (err) {
+   toast.error(`Can't connect with server, try again later`, {
+    position: 'top-center',
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'light'
+   });
+  }
  };
 
  const handleGetForecast = async () => {
   const location = newLocation.toLowerCase().replace(' city', '');
 
-  fetch(`http://127.0.0.1:8000/api/get-forecast/${location}`, {
-   method: 'GET',
-   headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/json'
-   }
-  }).then(async (res) => {
-   if (res.ok) {
-    return res.json().then((data) => {
-     setForecastData(data);
-    });
-   } else {
-    console.log('Internal server error');
-   }
-  });
+  try {
+   fetch(`http://127.0.0.1:8000/api/get-forecast/${location}`, {
+    method: 'GET',
+    headers: {
+     'Content-Type': 'application/json',
+     Accept: 'application/json'
+    }
+   }).then(async (res) => {
+    if (res.ok) {
+     return res.json().then((data) => {
+      setForecastData(data);
+     });
+    } else {
+     toast.error(`Cannot search ${location}`, {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light'
+     });
+    }
+   });
+  } catch (err) {
+   toast.error(`Can't connect with server, try again later`, {
+    position: 'top-center',
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'light'
+   });
+  }
  };
 
  const onChangeCondition = (value) => {
-  console.log(value);
   setBackground(value);
  };
 
@@ -102,6 +148,7 @@ function App() {
      backgroundRepeat: 'no-repeat'
     }}
    >
+    <ToastContainer />
     <div className="mx-5 lg:mx-32 lg:max-mx-4xl rounded p-10 ">
      <div className="flex items-center justify-center">
       <div className="w-[600px] text-center">
@@ -115,7 +162,7 @@ function App() {
        </p>
       </div>
      </div>
-     <div className="flex items-center justify-center mt-10  backdrop-blur-lg p-5 rounded">
+     <div className="flex items-center justify-center mt-5 backdrop-blur-lg p-5 rounded">
       <form action="" className="w-full">
        <div className="flex items-center gap-2 w-full">
         <input

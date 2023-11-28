@@ -8,10 +8,6 @@ export const Weather = ({ weatherData, onChangeCondition }) => {
   setWeather(weatherData);
  }, [weatherData]);
 
- const getIconUrl = (iconCode) => {
-  return `https://openweathermap.org/img/wn/${iconCode}.png`;
- };
-
  useEffect(() => {
   onChangeCondition(weather?.weatherResponse?.weather[0]?.main);
   setWeatherCondition(weather?.weatherResponse?.weather[0]?.main);
@@ -65,7 +61,7 @@ export const Weather = ({ weatherData, onChangeCondition }) => {
         )}
        </p>
        <div className="pt-2">
-        <img src={`${getWeatherCondition()}`} alt="" className="w-[120px]" />
+        <img src={`${getWeatherCondition()}`} alt="" className="w-[150px]" />
         <p className="text-sm font-semibold">
          {weather?.weatherResponse?.weather[0]?.main}
         </p>
@@ -110,7 +106,8 @@ export const Weather = ({ weatherData, onChangeCondition }) => {
         </h1>
         <p className="font-semibd text-5xl">°</p>
        </div>
-       <div className="pt-2 space-y-1">
+       <div className=" space-y-1">
+        <h1 className="text-lg font-semibold">Temparature</h1>
         <p className="text-xs">
          Feels like: &nbsp; {weather?.weatherResponse?.main.feels_like}°
         </p>
