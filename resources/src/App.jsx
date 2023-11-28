@@ -113,7 +113,8 @@ function App() {
   }
  };
 
- const onChangeCondition = (value) => {
+  const onChangeCondition = (value) => {
+   console.log(value)
   setBackground(value);
  };
 
@@ -124,7 +125,7 @@ function App() {
     return bg.sunny;
    case 'Rain':
     return bg.rainy;
-   case 'Thunder':
+   case 'Thunderstorm':
     return bg.thunder;
    case 'Clouds':
     return bg.cloudy;
